@@ -10,8 +10,15 @@ jobs:
   restart:
     runs-on: ubuntu-latest
     steps:
-      - name: Call Railway API
+      - name: Trigger Railway Redeploy via GraphQL v2
         run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
-            https://backboard.railway.app/project/${{ secrets.RAILWAY_PROJECT_ID }}/redeploy
+             curl -X POST https://backboard.railway.app/graphql/v2 \
+             -H "Content-Type: application/json" \
+             -H "Authorization: Bearer ${{ secrets.RAILWAY_API_TOKEN }}" \
+             -d '{
+                  "query": "mutation serviceInstanceRedeploy($environmentId: String!, $serviceId: String!) { serviceInstanceRedeploy(environmentId: $environmentId, serviceId: $serviceId) }",
+                  "variables": {
+                  "environmentId": "${{ secrets.RAILWAY_ENVIRONMENT_ID }}",
+                  "serviceId": "${{ secrets.RAILWAY_SERVICE_ID }}"
+                }
+              }'
