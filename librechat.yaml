@@ -181,7 +181,7 @@ memory:
     - interests       # Personal or professional interests
   agent:
     provider: "OpenRouter"
-    model: "switchpoint/router"
+    model: "openai/gpt-4o"
     instructions: |
       A memory assistant that stores per-user information securely and recalls it when relevant.
     model_parameters:
