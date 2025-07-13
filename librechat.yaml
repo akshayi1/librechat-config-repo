@@ -163,7 +163,7 @@ endpoints:
     dropParams:
     - stop
     titleConvo: true
-    titleModel: switchpoint/router
+    titleModel: openrouter/auto
     summarize: true
     summaryModel: openrouter/cypher-alpha
     forcePrompt: false
