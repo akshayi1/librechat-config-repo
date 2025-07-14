@@ -13,12 +13,6 @@ registration:
   - google
   - openid
 endpoints:
-  openAI:
-    disabled: true
-  anthropic:
-    disabled: true
-  google:
-    disabled: true
   custom:
   - name: OpenRouter
     apiKey: ${OPENROUTER_KEY}
